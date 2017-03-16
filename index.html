@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- bootstrap length -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- mobile screen capable -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- css external link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Jewel Collector</title>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div id="Header" class="row">
+
+            <div class="col-xs-3 col-med-4">
+                <h1>Gem Miner</h1>
+            </div>
+
+        </div>
+		<!-- instructions panel -->
+        <div class="panel panel-default" id="panel">
+            <div class="panel-body">
+                <p>You will be given a random number at the start of this game</p>
+
+                <p>There are four crystals below here. If you click on a crystal you will add specific amount of points to your score</p>
+
+                <p>You win by matching your total score to the random number, you lose if you bust or go over that number</p>
+
+                <p>The value of each crystal is hidden until you click on it</p>
+
+                <p>Each time when the game starts, the game will change the values of each crystal</p>
+            </div>
+
+        </div>
+
+        <div class="row">
+        <!-- box that contains computer generated number -->
+            <div class="col-lg-2 col-xs-3" id="comp-score-2">
+            </div>
+		<!-- box that tracks adds up users guesses -->
+            <div class="col-lg-1 col-xs-3" id="scoreboard">
+            </div>
+		
+
+        </div>
+
+        <br><br>
+
+		<!-- ruby button -->
+        <div class="row">
+            <button class="btn btn-default">
+                <img src="https://cdn.codementor.io/assets/topic/category_header/ruby-on-rails-bc9ab2af8d92eb4e7eb3211d548a09ad.png" id="ruby">
+            </button>
+
+			<!-- emerald button -->
+            <button class="btn btn-default">
+                <img src="http://www.fensterbilder.edelgrau.de/downloadbilder-bunt/sonstige-21.jpg" id="emerald">
+            </button>
+
+		<!-- topaz button -->
+            <button class="btn btn-default">
+                <img src="http://orig05.deviantart.net/7007/f/2013/154/5/a/chaos_emerald__green__by_flamethewolf1600-d67prcs.jpg" id="topaz">
+            </button>
+
+		<!-- diamond button -->
+            <button class="btn btn-default">
+                <img src="http://vignette3.wikia.nocookie.net/steven-universe/images/6/63/GoldenKnight10%27_Yellow_Topaz_gemstone.png/revision/latest?cb=20151108170208" id="diamond">
+            </button>
+        </div>
+
+        <br>
+
+		<!-- keeps track of wins and losses -->
+        <div class="row">
+            <div class="col-lg-2 col-xs-2" id="tally">
+            <!-- insert my javascript into the two spans -->
+            <p>Wins :</p> <span id="wins"></span>
+            <p>Losses :</p> <span id="losses"></span>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- javascript external link -->
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</html>
