@@ -1,118 +1,114 @@
-
-
 // variables to start our code
 var wins = 0;
 var losses = 0;
 var totalScore = 0;
-var gameOver = false;
 var computerPick = 0;
 
+var crystal = {
+    diamond: {
+        name: "Diamond",
+        value: 0
+    },
+    emerald: {
+        name: "Emerald",
+        value: 0
+    },
+    ruby: {
+        name: "Ruby",
+        value: 0
+    },
+    topaz: {
+        name: "Topaz",
+        value: 0
+    }
+};
+
+var getRandom = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var start = function() {
+    computerPick = getRandom(1, 150);
+    totalScore = 0;
+    // this is the computers number picked the user must add up to
 
 
-$(document).ready(function() {
-		computerPick = Math.floor(Math.random() * 150) +1;
+    crystal.ruby.value = getRandom(1, 12);
+    crystal.emerald.value = getRandom(1, 12);
+    crystal.topaz.value = getRandom(1, 12);
+    crystal.diamond.value = getRandom(1, 12);
 
-// this is the computers number picked the user must add up to
+    $("#comp-score-2").html(computerPick);
+    $("#scoreboard").html(totalScore);
 
-$("#comp-score-2").html(computerPick);
+
+    console.log(computerPick);
+}
+
+// function restart() {
+//     $("#comp-score-2").html(computerPick);
+//     computerPick = Math.floor(Math.random() * 150) + 1;
+//     ruby = Math.floor(Math.random() * 12) + 1;
+//     emerald = Math.floor(Math.random() * 12) + 1;
+//     topaz = Math.floor(Math.random() * 12) + 1;
+//     diamond = Math.floor(Math.random() * 12) + 1;
+
+//     totalScore = 0;
+//     gameOver = false;
+// }
 
 
-var ruby = Math.floor(Math.random() * 12) + 1;
-var emerald = Math.floor(Math.random() * 12) + 1;
-var topaz = Math.floor(Math.random() * 12) + 1;
-var diamond = Math.floor(Math.random() * 12) + 1;
-
-function restart() {
-	$("#comp-score-2").html(computerPick);
-		computerPick = Math.floor(Math.random() *150) +1;
-		ruby = Math.floor(Math.random() * 12) + 1;
-		emerald = Math.floor(Math.random() * 12) + 1;
-		topaz = Math.floor(Math.random() * 12) + 1;
-		diamond = Math.floor(Math.random() * 12) + 1;
-
-		totalScore = 0;
-		gameOver = false;
-	}
-
-$("#ruby").on("click", function() {
-	totalScore = totalScore + ruby;
-	$("#scoreboard").html(totalScore);
-	checkScore();
-	console.log(ruby);
-});
-
-$("#emerald").on("click", function() {
-	totalScore = totalScore + emerald;
-	$("#scoreboard").html(totalScore);
-	checkScore();
-	console.log(emerald);
-});
-
-$("#topaz").on("click", function() {
-	totalScore = totalScore + topaz;
-	$("#scoreboard").html(totalScore);
-	checkScore();
-	console.log(topaz);
-});
-
-$("#diamond").on("click", function() {
-	totalScore = totalScore + diamond;
-	$("#scoreboard").html(totalScore);
-	checkScore();
-	console.log(diamond);
-});
 
 function checkScore() {
 
-if  (totalScore > computerPick) {
-		losses++;
-		$("#losses").html(losses);
-		console.log(computerPick);
-		restart();
-		alert("Wow you're great at math...")
-		
-	}
+    if (totalScore > computerPick) {
+        losses++;
+        $("#losses").html(losses);
+        console.log(computerPick);
+        alert("Wow you're great at math...not")
+        start();
 
-if (totalScore == computerPick) {
-	wins++;
-	gameOver = true;
-	$("#wins").html(wins);
-	restart();
-	alert("Nerd Alert!!!")
-	
-}
+    } else if (totalScore === computerPick) {
+        alert("Nerd Alert!!!");
+        wins++;
+        $("#wins").html(wins);
+        start();
 
-
-
+    }
 
 }
 
+var addValues = function(clickedCrystal) {
+
+    // Change currentScore
+    totalScore += clickedCrystal.value;
+
+    // Change the HTML to reflect changes in currentScore
+    $("#your-score").html(totalScore);
+
+    // Call the checkWin Function
+    checkScore();
+
+    // Testing Console
+    console.log("Your Score: " + totalScore);
+};
+
+// Main process for the game
+
+start();
+
+$("#diamond").click(function() {
+    addValues(crystal.diamond);
 });
 
+$("#ruby").click(function() {
+    addValues(crystal.ruby);
+});
 
+$("#emerald").click(function() {
+    addValues(crystal.emerald);
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$("#topaz").click(function() {
+    addValues(crystal.topaz);
+});
